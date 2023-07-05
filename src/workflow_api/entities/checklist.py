@@ -1,4 +1,4 @@
-from base import Base
+from workflow_api.entities.base import Base
 from typing import List
 from sqlalchemy import String, Boolean, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -11,7 +11,7 @@ class Checklist(Base):
     workflow_desc: Mapped[str] = mapped_column(String(255))
     identifier: Mapped[str] = mapped_column(String(50))
     archived: Mapped[bool] = mapped_column(Boolean)
-    checklist_items: List["ChecklistItems"] = relationship()
+    checklist_items: Mapped[List["ChecklistItems"]] = relationship()
 
     def __repr__(self):
         return (

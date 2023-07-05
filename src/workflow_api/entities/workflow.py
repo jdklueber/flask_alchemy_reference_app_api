@@ -1,4 +1,4 @@
-from base import Base
+from workflow_api.entities.base import Base
 from typing import List
 from sqlalchemy import String, Boolean, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -9,7 +9,7 @@ class Workflow(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(50))
     desc: Mapped[str] = mapped_column(String(255))
-    workflow_items: List["WorkflowItems"] = relationship()
+    workflow_items: Mapped[List["WorkflowItems"]] = relationship()
 
     def __repr__(self):
         return f"<Workflow> id: {self.id} name: {self.name} " f"desc: {self.desc}"
